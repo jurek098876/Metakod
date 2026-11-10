@@ -173,6 +173,29 @@ details.mod-key summary:hover{background:rgba(20,32,26,0.05)}
 .f-m{font-size:12px;color:rgba(255,255,255,0.88)}
 @media (prefers-reduced-motion: reduce){.u-dot,.mod-l li{animation:none}}
 </style>
+<style>
+.calc{display:flex;flex-wrap:wrap;gap:28px;padding:clamp(24px,4vw,48px)}
+.calc-l{flex:999 1 400px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.calc-r{flex:1 1 320px;min-width:0;border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.calc-f{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 12px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.3)}
+.calc-k{font-size:15px;font-weight:400}
+.calc-v{font-size:26px;font-weight:500;color:#F1E6C8;font-variant-numeric:tabular-nums}
+.calc-f input{grid-column:1/3;width:100%;margin:8px 0 2px;-webkit-appearance:none;appearance:none;height:28px;background:transparent;cursor:pointer}
+.calc-f input::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(90deg,#E8D9B5 var(--p,30%),rgba(255,255,255,0.22) var(--p,30%))}
+.calc-f input::-moz-range-track{height:6px;border-radius:999px;background:rgba(255,255,255,0.22)}
+.calc-f input::-moz-range-progress{height:6px;border-radius:999px;background:#E8D9B5}
+.calc-f input::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-10px;border-radius:50%;background:#FFFFFF;border:3px solid #E8D9B5;box-shadow:0 4px 14px rgba(0,0,0,0.35)}
+.calc-f input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#FFFFFF;border:3px solid #E8D9B5}
+.calc-f input:focus-visible{outline:2px solid #9BE3A5;outline-offset:4px;border-radius:8px}
+.calc-big{display:flex;align-items:baseline;gap:12px}
+.calc-big #cv-n{font-size:clamp(72px,9vw,104px);font-weight:500;line-height:0.9;letter-spacing:-0.04em;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.calc-u{font-size:20px;font-weight:400;color:#E8D9B5}
+.calc-dots{display:flex;flex-wrap:wrap;gap:7px;min-height:18px}
+.calc-dots i{width:16px;height:16px;border-radius:50%;background:#9BE3A5;box-shadow:0 0 12px rgba(155,227,165,0.5);animation:appear .3s ease both}
+.calc-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,0.07);font-size:14px;font-weight:400}
+.calc-row b{font-size:18px;font-weight:500;color:#9BE3A5;white-space:nowrap}
+.calc-cta{display:block;text-align:center;text-decoration:none;padding:15px 20px;border-radius:999px;background:#E8D9B5;color:#14201A!important;font-weight:500;font-size:16px}
+</style>
 </head>
 <body>
 <div style="position: relative; color: #FFFFFF; font-family: Geologica, sans-serif; font-weight: 300; font-size: 17px; line-height: 1.6; background: #0E1712">
@@ -251,6 +274,29 @@ details.mod-key summary:hover{background:rgba(20,32,26,0.05)}
 <span style="flex: 1 1 0; text-align: center; padding: 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); font-size: 14px">Змінити</span>
 </div>
 <div class="mono" style="font-size: 11px; color: rgba(255,255,255,0.6)">* приклад інтерфейсу, цифри умовні</div>
+</div>
+</div>
+</div>
+
+<div id="calc" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 72px">
+<div class="panel calc">
+<div class="calc-l">
+<div class="mono" style="font-size: 13px; color: #E8D9B5">// калькулятор</div>
+<h2 style="margin: 0; font-size: clamp(32px, 4.2vw, 52px)">Скільки клієнтів тобі <span class="it" style="font-size: 1.15em; color: #F1E6C8">потрібно?</span></h2>
+<p style="margin: 0; font-weight: 400; max-width: 520px">Посунь повзунки: скільки хочеш заробляти і скільки бере за ведення реклами один бізнес.</p>
+<label class="calc-f"><span class="calc-k">Хочу заробляти на місяць</span><output class="calc-v" id="cv-inc">€2 000</output>
+<input type="range" id="c-inc" min="500" max="6000" step="100" value="2000" aria-label="Бажаний дохід на місяць, євро"></label>
+<label class="calc-f"><span class="calc-k">Оплата одного клієнта на місяць</span><output class="calc-v" id="cv-fee">€300</output>
+<input type="range" id="c-fee" min="150" max="1000" step="25" value="300" aria-label="Оплата одного клієнта на місяць, євро"></label>
+</div>
+<div class="calc-r screen">
+<div class="mono" style="font-size: 12px; color: #E8D9B5">тобі потрібно</div>
+<div class="calc-big"><span id="cv-n">7</span><span class="calc-u" id="cv-nu">клієнтів</span></div>
+<div class="calc-dots" id="cv-dots" aria-hidden="true"></div>
+<div style="font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.9)">Звіти, моніторинг і пошук нових бізнесів по них веде твій AI-агент. Ти — стратегія і спілкування.</div>
+<div class="calc-row"><span>Один клієнт за 2 роки співпраці*</span><b id="cv-2y">€7 200</b></div>
+<a href="#tariffs" class="calc-cta">Навчитися брати таких клієнтів →</a>
+<div class="mono" style="font-size: 11px; color: rgba(255,255,255,0.7)">* 2 роки — середній термін співпраці з клієнтами в Юрія. Це розрахунок для орієнтиру, а не обіцянка доходу: ціну за ведення ти встановлюєш сам.</div>
 </div>
 </div>
 </div>
@@ -868,6 +914,31 @@ details.mod-key summary:hover{background:rgba(20,32,26,0.05)}
   });
   var open = document.getElementById('mk-cookie-open');
   if (open) open.addEventListener('click', function(){ box.hidden = false; });
+})();
+</script>
+<script>
+(function(){
+  var inc = document.getElementById('c-inc'), fee = document.getElementById('c-fee');
+  if (!inc) return;
+  var f = function(n){ return '€' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'); };
+  function word(n){ var a = n % 10, b = n % 100; if (a === 1 && b !== 11) return 'клієнт'; if (a >= 2 && a <= 4 && (b < 12 || b > 14)) return 'клієнти'; return 'клієнтів'; }
+  function fill(el){ el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min) * 100) + '%'); }
+  function upd(){
+    var i = +inc.value, p = +fee.value, n = Math.max(1, Math.ceil(i / p));
+    document.getElementById('cv-inc').textContent = f(i);
+    document.getElementById('cv-fee').textContent = f(p);
+    document.getElementById('cv-n').textContent = n;
+    document.getElementById('cv-nu').textContent = word(n);
+    document.getElementById('cv-2y').textContent = f(p * 24);
+    var d = document.getElementById('cv-dots'), k = Math.min(n, 40);
+    if (d.children.length !== k) { d.innerHTML = ''; for (var j = 0; j < k; j++) d.appendChild(document.createElement('i')); }
+    fill(inc); fill(fee);
+  }
+  inc.addEventListener('input', upd); fee.addEventListener('input', upd);
+  var sent = false;
+  function once(){ if (!sent && window.fbq) { sent = true; fbq('trackCustom', 'CalculatorUsed'); } }
+  inc.addEventListener('change', once); fee.addEventListener('change', once);
+  upd();
 })();
 </script>
 </body>
